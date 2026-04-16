@@ -11,9 +11,9 @@ const Footer = () => {
           <div className="pt-4 pb-10">
             <h2 className="text-[#FFFFFF] font-medium">Social Links</h2>
             <div className="flex gap-3 pt-4">
-              <img src="/assets/instagram.png" alt="" />
-              <img src="/assets/facebook.png" alt="" />
-              <img src="/assets/twitter.png" alt="" />
+              <img src="/assets/instagram.png" className="transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]" alt="" />
+              <img src="/assets/facebook.png" className="transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]" alt="" />
+              <img src="/assets/twitter.png" className="transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]" alt="" />
             </div>
           </div>
           <div className="w-full text-[#FAFAFA60] pb-7.5">

@@ -12,8 +12,6 @@ import { DetailsContext } from "../../context/contextfile";
 import { toast } from "react-toastify";
 
 const Details = () => {
-
-
   const { id } = useParams();
   const { friends, loding } = useFriends();
 
@@ -28,18 +26,24 @@ const Details = () => {
   const { addCheckin, checkin } = context;
 
   const handleCheckin = (type) => {
+    const date = new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
     const newEntry = {
       friendId: data.id,
       friendName: data.name,
       type,
-      time: new Date().toLocaleString(),
+      time: date,
     };
 
     addCheckin(newEntry);
     toast.success(`${type} ${data.name}`);
   };
 
-console.log(checkin)
+  console.log(checkin);
   if (loding) {
     return (
       <div className="flex justify-center items-center">
