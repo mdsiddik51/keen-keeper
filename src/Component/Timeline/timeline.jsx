@@ -21,10 +21,30 @@ const Timeline = () => {
             onChange={(e) => setFilter(e.target.value)}
             value={filter}
           >
-            <option value="All" className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]">All</option>
-            <option value="Call" className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]">Call</option>
-            <option value="Text" className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]">Text</option>
-            <option value="Video" className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]">Video</option>
+            <option
+              value="All"
+              className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]"
+            >
+              All
+            </option>
+            <option
+              value="Call"
+              className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]"
+            >
+              Call
+            </option>
+            <option
+              value="Text"
+              className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]"
+            >
+              Text
+            </option>
+            <option
+              value="Video"
+              className="hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-2 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]"
+            >
+              Video
+            </option>
           </select>
         </div>
 

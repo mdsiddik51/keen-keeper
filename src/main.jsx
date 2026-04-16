@@ -4,14 +4,13 @@ import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import { router } from "./router/router";
 import DetailsContextProvider from "./context/detailscontext";
-import { ToastContainer } from "react-toastify";
-
+import { Toaster } from "react-hot-toast";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <DetailsContextProvider >
+    <DetailsContextProvider>
       <RouterProvider router={router} />
     </DetailsContextProvider>
-    <ToastContainer position="top-center"/>
+    <Toaster position="top-center" reverseOrder={false} />
   </StrictMode>,
 );

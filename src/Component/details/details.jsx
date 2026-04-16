@@ -9,22 +9,19 @@ import { IoVideocamOutline } from "react-icons/io5";
 import { ScaleLoader } from "react-spinners";
 import { useContext } from "react";
 import { DetailsContext } from "../../context/contextfile";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const Details = () => {
+  // for find the friends details with id
   const { id } = useParams();
   const { friends, loding } = useFriends();
-
   const data = friends.find((f) => f.id === Number(id));
 
+  // using context for global state control
   const context = useContext(DetailsContext);
-
-  if (!context) {
-    return <div>Context not found (Provider missing)</div>;
-  }
-
   const { addCheckin, checkin } = context;
 
+  // handle button click data
   const handleCheckin = (type) => {
     const date = new Date().toLocaleDateString("en-US", {
       year: "numeric",
@@ -43,7 +40,17 @@ const Details = () => {
     toast.success(`${type} ${data.name}`);
   };
 
-  console.log(checkin);
+  // date formate
+const formatDate = (date) =>
+  new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+
+
+
   if (loding) {
     return (
       <div className="flex justify-center items-center">
@@ -71,22 +78,27 @@ const Details = () => {
               />
             </div>
 
-            <h2 className="text-[#1F2937] font-semibold text-2xl pt-3 pb-3 ">
-              {data.name}
-            </h2>
+            <div>
+              <h2 className="text-[#1F2937] font-semibold text-2xl pt-3 pb-3 ">
+                {data.name}
+              </h2>
+            </div>
 
             <div className="gap-3 flex flex-col">
               <span
-                className={
+                className={` rounded-full px-4 py-1 text-white  ${
                   data.status === "overdue"
-                    ? "text-white bg-[#EF4444] rounded-full px-4 py-1"
-                    : "text-white bg-[#EFAD44] rounded-full px-4 py-1"
+                    ? " bg-[#EF4444] "
+                    : data.status === "on-track"
+                      ? "bg-[#244D3F] "
+                      : " bg-[#EFAD44] "
                 }
+                  `}
               >
                 {data.status}
               </span>
 
-              <div className="flex gap-2">
+              <div className="flex gap-2 justify-center">
                 {data.tags.map((tag, i) => (
                   <span
                     key={i}
@@ -131,7 +143,7 @@ const Details = () => {
         <div>
           <div className="grid grid-cols-3 gap-4 pb-4">
             <div className="bg-[#FFFFFF] p-4 rounded-md shadow-sm text-center">
-              <h2 className="pt-4 font-semibold text-2xl md:text-3xl">
+              <h2 className="pt-4 font-semibold text-[#244D3F] text-[16px] md:text-2xl">
                 {data.days_since_contact}
               </h2>
               <p className="pt-2 text-[#64748B] text-[16px] md:text-lg">
@@ -140,7 +152,7 @@ const Details = () => {
             </div>
 
             <div className="bg-[#FFFFFF] p-4 rounded-md shadow-sm text-center">
-              <h2 className="pt-4 font-semibold text-2xl md:text-3xl">
+              <h2 className="pt-4 font-semibold text-[#244D3F] text-2xl md:text-2xl">
                 {data.goal}
               </h2>
               <p className="pt-2 text-[#64748B] text-[16px] md:text-lg">
@@ -149,8 +161,8 @@ const Details = () => {
             </div>
 
             <div className="bg-[#FFFFFF] p-4 rounded-md shadow-sm text-center">
-              <h2 className="pt-4 font-semibold text-[16px] md:text-3xl">
-                {new Date(data.next_due_date).toLocaleDateString("en-US")}
+              <h2 className="pt-4 font-semibold text-[#244D3F] text-[16px] md:text-2xl">
+                {formatDate(data.next_due_date)}
               </h2>
               <p className="pt-2 text-[#64748B] text-lg">Next Due</p>
             </div>

@@ -4,6 +4,7 @@ import Root from "../Component/Root/root";
 import Error from "../Component/error/error";
 import Details from "../Component/details/details";
 import Timeline from "../Component/Timeline/timeline";
+import Status from "../Component/status/status";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: 'timeline',
         element: <Timeline/>
+      },
+      {
+        path: 'status',
+        element: <Status/>
       }
     ],
     errorElement: <Error />,
