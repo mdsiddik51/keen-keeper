@@ -1,24 +1,9 @@
-const Card = ({ item }) => {
-  console.log(item);
+import { Link } from "react-router";
 
-  //     {
-  //     "id": 1,
-  //     "name": "Emma Wilson",
-  //     "picture": "https://randomuser.me/api/portraits/women/1.jpg",
-  //     "email": "emma.w@example.com",
-  //     "days_since_contact": 62,
-  //     "status": "overdue",
-  //     "tags": [
-  //         "family"
-  //     ],
-  //     "bio": "Former colleague, great mentor.",
-  //     "goal": 30,
-  //     "next_due_date": "2026-02-27",
-  //     "preferred_contact": "email"
-  // }
+const Card = ({ item }) => {
   return (
     <div>
-      <div className="grid place-items-center text-center rounded-md shadow-lg hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-4 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]">
+      <Link to={`/details/${item.id}`} className="grid place-items-center text-center rounded-md shadow-lg hover:shadow-[0_0_20px_rgba(149,20,250,0.5)]  bg-[#FFFFFF] p-4 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[#9514FA]">
         <div className="pb-3 p-2 ">
           <img src={item.picture} className="rounded-full h-20 w-20" alt="" />
         </div>
@@ -39,7 +24,7 @@ const Card = ({ item }) => {
         <span className={item.status === 'overdue'? "text-white bg-[#EF4444] rounded-full px-4 py-1" : "text-white bg-[#EFAD44] rounded-full px-4 py-1"}>
           {item.status}
         </span>
-      </div>
+      </Link>
     </div>
   );
 };

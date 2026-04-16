@@ -12,9 +12,9 @@ const useFriends = () => {
       setfriends(data);
     };
     fatchData();
-  });
+  }, []);
 
-  return {friends , loding};
+  return {friends , loding };
 };
 
 export default useFriends;
