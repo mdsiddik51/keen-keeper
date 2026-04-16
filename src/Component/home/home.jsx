@@ -2,20 +2,10 @@ import { useEffect, useState } from "react";
 import { IoAdd } from "react-icons/io5";
 import Card from "../card/card";
 import { ScaleLoader } from "react-spinners";
+import useFriends from "../../hooks/hook";
 
 const Home = () => {
-  const [friends, setfriends] = useState([]);
-  const [loding, setloding] = useState(true);
-
-  useEffect(() => {
-    const fatchData = async () => {
-      const responce = await fetch("/friends.json");
-      const data = await responce.json();
-      setloding(false);
-      setfriends(data);
-    };
-    fatchData();
-  });
+  const {friends , loding} = useFriends();
 
   //   data filter code
   const onTrack = friends.filter((item) => item.status === "on-track");
@@ -81,7 +71,7 @@ const Home = () => {
               <h1 className="text-[#1F2937] font-semibold text-2xl p-1">
                 Your Friends
               </h1>
-              <div className="pt-5 grid grid-cols-4 gap-4">
+              <div className="pt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {friends.map((item) => {
                   return <Card key={item.id} item={item} />;
                 })}
