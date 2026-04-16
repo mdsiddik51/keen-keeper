@@ -9,13 +9,23 @@ import { IoVideocamOutline } from "react-icons/io5";
 import { ScaleLoader } from "react-spinners";
 import { useContext } from "react";
 import { DetailsContext } from "../../context/contextfile";
-// import { DetailsContext } from "../../context/detailscontext";
+import { toast } from "react-toastify";
 
 const Details = () => {
-  // const { checkin, setcheckin } = useContext(DetailsContext);
+
+
+  const { id } = useParams();
+  const { friends, loding } = useFriends();
+
+  const data = friends.find((f) => f.id === Number(id));
+
   const context = useContext(DetailsContext);
-  const { checkin, setcheckin } = context;
-  console.log(checkin);
+
+  if (!context) {
+    return <div>Context not found (Provider missing)</div>;
+  }
+
+  const { addCheckin, checkin } = context;
 
   const handleCheckin = (type) => {
     const newEntry = {
@@ -26,13 +36,10 @@ const Details = () => {
     };
 
     addCheckin(newEntry);
+    toast.success(`${type} ${data.name}`);
   };
 
-  const { id } = useParams();
-  const { friends, loding } = useFriends();
-
-  const data = friends.find((friend) => friend.id === Number(id));
-
+console.log(checkin)
   if (loding) {
     return (
       <div className="flex justify-center items-center">
@@ -166,21 +173,30 @@ const Details = () => {
               </h3>
 
               <div className="grid grid-cols-3 gap-4">
-                <div onClick={() => {handleCheckin('Call')}} className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
+                <div
+                  onClick={() => handleCheckin("Call")}
+                  className="bg-[#F8FAFC]  shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm"
+                >
                   <h3 className="font-bold text-2xl text-[#1F2937]">
                     <FiPhoneCall />
                   </h3>
                   <h2 className="text-[#1F2937] text-[18px] pt-1">Call</h2>
                 </div>
 
-                <div onClick={() => {handleCheckin('Text')}} className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
+                <div
+                  onClick={() => handleCheckin("Text")}
+                  className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm"
+                >
                   <h3 className="font-bold text-2xl text-[#1F2937]">
                     <LuMessageSquareMore />
                   </h3>
                   <h2 className="text-[#1F2937] text-[18px] pt-1">Text</h2>
                 </div>
 
-                <div onClick={() => {handleCheckin('Video')}} className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
+                <div
+                  onClick={() => handleCheckin("Video")}
+                  className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm"
+                >
                   <h3 className="font-bold text-2xl text-[#1F2937]">
                     <IoVideocamOutline />
                   </h3>

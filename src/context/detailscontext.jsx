@@ -8,14 +8,10 @@ const DetailsContextProvider = ({ children }) => {
     setcheckin((prev) => [...prev, item]);
   };
 
-  const data = {
-    checkin,
-    setcheckin,
-    addCheckin,
-  };
-
   return (
-    <DetailsContext.Provider value={data}>{children}</DetailsContext.Provider>
+    <DetailsContext.Provider value={{ checkin, setcheckin, addCheckin }}>
+      {children}
+    </DetailsContext.Provider>
   );
 };
 
