@@ -15,7 +15,7 @@ const Navbar = () => {
             <IoHomeOutline />
             Home
           </Mynavlink>
-          <Mynavlink to={"/no1"}>
+          <Mynavlink to={"timeline"}>
             <CiTimer />
             Timeline
           </Mynavlink>

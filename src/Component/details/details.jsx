@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import useFriends from "../../hooks/hook";
 import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { IoIosArchive } from "react-icons/io";
@@ -7,8 +7,27 @@ import { FiPhoneCall } from "react-icons/fi";
 import { LuMessageSquareMore } from "react-icons/lu";
 import { IoVideocamOutline } from "react-icons/io5";
 import { ScaleLoader } from "react-spinners";
+import { useContext } from "react";
+import { DetailsContext } from "../../context/contextfile";
+// import { DetailsContext } from "../../context/detailscontext";
 
 const Details = () => {
+  // const { checkin, setcheckin } = useContext(DetailsContext);
+  const context = useContext(DetailsContext);
+  const { checkin, setcheckin } = context;
+  console.log(checkin);
+
+  const handleCheckin = (type) => {
+    const newEntry = {
+      friendId: data.id,
+      friendName: data.name,
+      type,
+      time: new Date().toLocaleString(),
+    };
+
+    addCheckin(newEntry);
+  };
+
   const { id } = useParams();
   const { friends, loding } = useFriends();
 
@@ -120,7 +139,7 @@ const Details = () => {
 
             <div className="bg-[#FFFFFF] p-4 rounded-md shadow-sm text-center">
               <h2 className="pt-4 font-semibold text-[16px] md:text-3xl">
-                {new Date(data.next_due_date).toLocaleDateString('en-US')}
+                {new Date(data.next_due_date).toLocaleDateString("en-US")}
               </h2>
               <p className="pt-2 text-[#64748B] text-lg">Next Due</p>
             </div>
@@ -147,21 +166,21 @@ const Details = () => {
               </h3>
 
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
+                <div onClick={() => {handleCheckin('Call')}} className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
                   <h3 className="font-bold text-2xl text-[#1F2937]">
                     <FiPhoneCall />
                   </h3>
                   <h2 className="text-[#1F2937] text-[18px] pt-1">Call</h2>
                 </div>
 
-                <div className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
+                <div onClick={() => {handleCheckin('Text')}} className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
                   <h3 className="font-bold text-2xl text-[#1F2937]">
                     <LuMessageSquareMore />
                   </h3>
                   <h2 className="text-[#1F2937] text-[18px] pt-1">Text</h2>
                 </div>
 
-                <div className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
+                <div onClick={() => {handleCheckin('Video')}} className="bg-[#F8FAFC] shadow-sm grid place-items-center border border-[#62738280] p-6 rounded-sm">
                   <h3 className="font-bold text-2xl text-[#1F2937]">
                     <IoVideocamOutline />
                   </h3>

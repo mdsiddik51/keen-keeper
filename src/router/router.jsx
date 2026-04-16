@@ -3,6 +3,7 @@ import Home from "../Component/home/home";
 import Root from "../Component/Root/root";
 import Error from "../Component/error/error";
 import Details from "../Component/details/details";
+import Timeline from "../Component/Timeline/timeline";
 
 export const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/details/:id',
+        path: 'details/:id',
         element: <Details/>
+      },
+      {
+        path: 'timeline',
+        element: <Timeline/>
       }
     ],
     errorElement: <Error />,
