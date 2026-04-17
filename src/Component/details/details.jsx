@@ -102,7 +102,7 @@ const formatDate = (date) =>
                 {data.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="bg-[#CBFADB] rounded-full px-4 py-1 text-[#244D3F]"
+                    className="bg-[#CBFADB]  rounded-full px-4 py-1 text-[#244D3F]"
                   >
                     {tag}
                   </span>
@@ -177,7 +177,7 @@ const formatDate = (date) =>
             </div>
 
             <p className="text-[#64748B] text-[18px] ">
-              Connect every{" "}
+              Connect every
               <span className="font-bold text-black">{data.goal} days</span>
             </p>
           </div>
