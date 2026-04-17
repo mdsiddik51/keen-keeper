@@ -28,4 +28,4 @@ KeenKeeper is a personal relationship management website designed to help you nu
 
 ## 🌐 Check out the platform
 
-  ➡️  
+  ➡️   https://starlit-tanuki-de7844.netlify.app/
